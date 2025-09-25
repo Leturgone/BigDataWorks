@@ -52,8 +52,16 @@ fig = go.Figure(data=[go.Pie(
     insidetextorientation='radial'
 )])
 
-fig.update_layout(
-    title='Топ-10 игр по количеству игроков'
-)
 
+fig.update_layout(
+    title=dict(
+        text='Топ-10 игр по количеству игроков',
+        x=0.5,
+        xanchor="center",
+        font=dict(size=20)
+    ),
+    width=None,
+    height=700,
+    margin=dict(l=0, r=0, t=50, b=0),
+)
 fig.show()
