@@ -5,7 +5,7 @@ import time
 
 # Загружаем MNIST, база данных образцов рукописного написания цифр
 (x_train, y_train), _ = mnist.load_data()
-X = x_train.reshape((x_train.shape[0], -1))
+X = x_train.reshape((x_train.shape[0], -1)) #преобразуем в двумерный массив
 labels = y_train
 
 
