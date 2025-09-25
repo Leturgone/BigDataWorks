@@ -37,23 +37,37 @@ avg_stats_per_year = df.groupby('ReleaseYear').agg({
 
 
 # Построение графика с годом выхода и  рейтингом
+
 plt.figure(figsize=(12, 6))
-plt.plot(avg_stats_per_year.index, avg_stats_per_year['Rating'], marker='o', color='crimson', linestyle='-',
+plt.plot(avg_stats_per_year.index, avg_stats_per_year['Rating'],
+         marker='o',
+         markerfacecolor="white", # цвет точек
+         markeredgecolor="black", # цвет границы
+         markeredgewidth=2, # толщина границы
+         color='crimson',
+         linestyle='-',
          label='Средний рейтинг')
-plt.xlabel('Год выхода')
-plt.ylabel('Средний рейтинг')
-plt.title('Средний рейтинг по годам выхода игр')
-plt.grid(True)
+
+plt.xlabel('Год выхода', fontsize=14)
+plt.ylabel('Средний рейтинг', fontsize=14)
+plt.title('Средний рейтинг по годам выхода игр', fontsize=20)
+plt.grid(True, linewidth=2, color="mistyrose")
 plt.legend()
 plt.show()
 
 # Построение графика c годом выхода игры и кол-вом игроков в текущий момент
 plt.figure(figsize=(12, 6))
-plt.plot(avg_stats_per_year.index, avg_stats_per_year['Playing'], marker='o', color='blue', linestyle='-',
-         label='Среднее количество игроков')
-plt.xlabel('Средний рейтинг')
-plt.ylabel('Среднее количество игроков')
-plt.title('Среднее количество игроков по рейтингу')
-plt.grid(True)
+plt.plot(avg_stats_per_year.index, avg_stats_per_year['Playing'],
+         marker='o',
+         markerfacecolor="white", # цвет точек
+         markeredgecolor="black", # цвет границы
+         markeredgewidth=2, # толщина границы
+         color='blue',
+         linestyle='-',
+         label='Максимальное количество игроков')
+plt.xlabel('Год выхода',fontsize=14)
+plt.ylabel('Максимальное количество игроков',fontsize=14)
+plt.title('Максимальное количество игроков по году', fontsize=20)
+plt.grid(True, linewidth=2, color="mistyrose")
 plt.legend()
 plt.show()
