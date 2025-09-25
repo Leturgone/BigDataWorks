@@ -1,10 +1,10 @@
 
+import time
+
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
-from umap import UMAP
 from sklearn.manifold import TSNE
 from tensorflow.keras.datasets import mnist
-import time
+from umap import UMAP
 
 # Загружаем MNIST, база данных образцов рукописного написания цифр
 (x_train, y_train), _ = mnist.load_data()
