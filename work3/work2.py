@@ -40,10 +40,11 @@ print(df.describe())
 
 
 # Проверка по странам: сколько дней с смертями > 3000
-if 'countriesAndTerritories' in df.columns and 'deaths' in df.columns:
-    deaths_over_3000 = df[df['deaths'] > 3000]
-    result = deaths_over_3000.groupby('countriesAndTerritories')['deaths'].count()
-    print("\nКоличество дней с более 3000 умерших по странам:")
-    print(result)
-else:
-    print("В данных отсутствуют колонки 'countriesAndTerritories' и/или 'deaths'.")
+deaths_over_3000 = df[df['deaths'] > 3000]
+result = deaths_over_3000.groupby('countriesAndTerritories')['deaths'].count()
+print("\nКоличество дней с более 3000 умерших по странам:")
+print(result)
+
+
+
+# Задание 11
