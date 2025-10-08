@@ -3,6 +3,7 @@ import sns
 from matplotlib import pyplot as plt
 import numpy as np
 from math import sqrt
+import scipy.stats as stats
 
 # Задание 1
 
@@ -130,3 +131,32 @@ print("99%:", ci_99_charges)
 print("\nДоверительные интервалы для bmi:")
 print("95%:", ci_95_bmi)
 print("99%:", ci_99_bmi)
+
+
+# Задание 8
+
+# Признаки для проверки
+features = ['bmi','charges']
+
+# Процедура проверки нормальности
+for feature in features:
+    data = df[feature].dropna()
+
+    print(f"\nПроверка нормальности для признака: {feature}")
+
+    # KS-тест
+    standardized_data = (data - np.mean(data)) / np.std(data, ddof=1)
+    ks_stat, p_value_ks = stats.kstest(standardized_data, 'norm')
+    print(f"KS-тест: статистика = {ks_stat:.4f}, p-уровень = {p_value_ks:.4f}")
+
+    # график Q-Q
+    plt.figure(figsize=(6, 4))
+    stats.probplot(data, dist="norm", plot=plt)
+    plt.title(f"Q-Q plot для {feature}")
+    plt.show()
+
+    # Выводы
+    if p_value_ks > 0.05:
+        print(f"На основе p-уровня {p_value_ks:.4f} можно не отвергать H0: данные распределены нормально.")
+    else:
+        print(f"На основе p-уровня {p_value_ks:.4f} отвергаем H0: данные не распределены нормально.")
