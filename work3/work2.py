@@ -45,6 +45,11 @@ result = deaths_over_3000.groupby('countriesAndTerritories')['deaths'].count()
 print("\nКоличество дней с более 3000 умерших по странам:")
 print(result)
 
+# Задание 12
 
+duplicates = df[df.duplicated()]
+print(f"\nКол-во дубликатов: {len(duplicates)}")
+df = df.drop_duplicates()
 
-# Задание 11
+after = df[df.duplicated()]
+print(f"\nКол-во дубликатов после удаления: {len(after)}")
