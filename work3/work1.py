@@ -46,9 +46,9 @@ for i, col in enumerate(cols):
     print(f"Медиана: {median_val}")
     print(f"Мода: {mode_val}")
 
-    axes[i].hist(data, bins=20, edgecolor='black', alpha=0.7)
+    axes[i].hist(data, color='green', bins=30, edgecolor='black', alpha=0.7)
     axes[i].axvline(mean_val, color='r', linestyle='--', label=f'Среднее = {mean_val:.2f}')
-    axes[i].axvline(median_val, color='g', linestyle='-.', label=f'Медиана = {median_val:.2f}')
+    axes[i].axvline(median_val, color='b', linestyle='-.', label=f'Медиана = {median_val:.2f}')
     axes[i].axvline(mode_val, color='purple', linestyle=':', label=f'Мода = {mode_val:.2f}')
     axes[i].set_title(f'Гистограмма для {col}')
     axes[i].set_xlabel(col)
@@ -59,3 +59,15 @@ plt.tight_layout()
 plt.show()
 
 # Задание 5
+
+numeric_cols = ['age', 'bmi', 'children', 'charges']
+fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+axes = axes.flatten()  # чтобы обращаться по индексу
+
+for i, col in enumerate(numeric_cols):
+    axes[i].boxplot(df[col])
+    axes[i].set_title(f'Box-plot для {col}')
+    axes[i].set_ylabel('Значение')
+
+plt.tight_layout()
+plt.show()
