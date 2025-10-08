@@ -2,6 +2,7 @@ import pandas as pd
 import sns
 from matplotlib import pyplot as plt
 import numpy as np
+from math import sqrt
 
 # Задание 1
 
@@ -103,3 +104,29 @@ for i, n in enumerate(n_values):
 
 plt.tight_layout()
 plt.show()
+
+
+# Задание 7
+
+def calc_confidence_interval(_data, confidence):
+    num = len(_data)
+    mean = np.mean(_data)
+    std = np.std(_data, ddof=1)
+    z = 1.96 if confidence == 0.95 else 2.58
+    margin = z * (std / sqrt(num))
+    return [float(mean - margin), float(mean + margin)]
+
+
+ci_95_charges = calc_confidence_interval(df["charges"], 0.95)
+ci_99_charges = calc_confidence_interval(df["charges"], 0.99)
+
+ci_95_bmi = calc_confidence_interval(df["bmi"], 0.95)
+ci_99_bmi = calc_confidence_interval(df["bmi"], 0.99)
+
+print("\nДоверительные интервалы для charges:")
+print("95%:", ci_95_charges)
+print("99%:", ci_99_charges)
+
+print("\nДоверительные интервалы для bmi:")
+print("95%:", ci_95_bmi)
+print("99%:", ci_99_bmi)
