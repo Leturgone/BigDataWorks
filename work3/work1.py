@@ -132,11 +132,10 @@ print("\nДоверительные интервалы для bmi:")
 print("95%:", ci_95_bmi)
 print("99%:", ci_99_bmi)
 
-
 # Задание 8
 
 # Признаки для проверки
-features = ['bmi','charges']
+features = ['bmi', 'charges']
 
 # Процедура проверки нормальности
 for feature in features:
