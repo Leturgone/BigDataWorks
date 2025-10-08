@@ -1,6 +1,7 @@
 import pandas as pd
 import sns
 from matplotlib import pyplot as plt
+import numpy as np
 
 # Задание 1
 
@@ -68,6 +69,37 @@ for i, col in enumerate(numeric_cols):
     axes[i].boxplot(df[col])
     axes[i].set_title(f'Box-plot для {col}')
     axes[i].set_ylabel('Значение')
+
+plt.tight_layout()
+plt.show()
+
+# Задание 6
+
+column = "charges"
+n_values = [5, 50, 100]
+samples = 300
+
+# Создаем фигуру с подграфиками: по одному для каждого n
+fig, axes = plt.subplots(1, len(n_values), figsize=(15, 4))
+
+for i, n in enumerate(n_values):
+    means = []
+
+    for _ in range(samples):
+        sample = df[column].sample(n, replace=True)
+        means.append(sample.mean())
+
+    mean_val = np.mean(means)
+    std_val = np.std(means)
+
+    print(f"Выборка n={n}: Cреднее = {mean_val:.2f}, std = {std_val:.2f}")
+
+    # Строим гистограмму распределения средних
+    axes[i].hist(means, bins=20, color="green", edgecolor="black", alpha=0.7)
+    axes[i].set_title(f"Распределение средних (n={n})")
+    axes[i].set_xlabel("Среднее значение выборки")
+    axes[i].set_ylabel("Частота")
+    axes[i].grid(axis="y", alpha=0.3)
 
 plt.tight_layout()
 plt.show()
