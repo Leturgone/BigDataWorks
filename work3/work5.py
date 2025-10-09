@@ -1,6 +1,8 @@
 import pandas as pd
 from scipy.stats import chi2_contingency
 
+# Задание 15
+
 data = pd.DataFrame({
     'Женат': [89, 17, 11, 43, 22, 1],
     'Гражданский брак': [80, 22, 20, 35, 6, 4],

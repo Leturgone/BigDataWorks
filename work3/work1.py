@@ -42,12 +42,17 @@ for i, col in enumerate(cols):
     mean_val = data.mean()
     median_val = data.median()
     mode_val = data.mode()[0]
-    std_dev = data.std()
+    std_val = data.std()
+    min_val = data.min()
+    max_val = data.max()
 
     print(f"\n{col.upper()}:")
     print(f"Среднее: {mean_val}")
     print(f"Медиана: {median_val}")
     print(f"Мода: {mode_val}")
+    print(f"Стандартное отклонение: {std_val:.2f}")
+    print(f"Мин: {min_val:.2f}, Макс: {max_val:.2f}, Разброс: {max_val - min_val:.2f}")
+    print()
 
     axes[i].hist(data, color='green', bins=30, edgecolor='black', alpha=0.7)
     axes[i].axvline(mean_val, color='r', linestyle='--', label=f'Среднее = {mean_val:.2f}')
